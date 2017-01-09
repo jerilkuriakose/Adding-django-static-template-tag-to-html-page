@@ -14,7 +14,7 @@
 # <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
 
 # Author: Jeril Kuriakose
-# Project: https://github.com/jerilkuriakose/
+# Project: https://github.com/jerilkuriakose/Adding-django-static-template-tag-to-html-page
 
 # TO RUN THIS FILE:
 # open this file using command prompt,
