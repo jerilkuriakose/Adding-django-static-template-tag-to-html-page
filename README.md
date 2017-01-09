@@ -17,7 +17,8 @@ will be converted to DJANGO STATIC FILE format or 'static template tag' such as
 ```
 
 Author: Jeril Kuriakose
-Project: [https://github.com/jerilkuriakose/](https://github.com/jerilkuriakose/Adding-django-static-template-tag-to-html-page)
+
+Project Page: [https://github.com/jerilkuriakose/Adding-django-static-template-tag-to-html-page](https://github.com/jerilkuriakose/Adding-django-static-template-tag-to-html-page)
 
 ### TO RUN THIS FILE:
 open this file using command prompt,
