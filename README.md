@@ -32,3 +32,17 @@ like
 ```
 D:\>python replace_path.py "C:\Users\username\Desktop\hata-html"
 ```
+#### if your static files are located inside another folder, pass the folder name as the second arguement
+```
+D:\>python replace_path.py <directory_path> <static_folder_name>
+```
+or
+```
+D:\>python replace_path.py "C:\Users\username\Desktop\hata-html" "main_page/"
+```
+will be replaced as follows:
+```
+<link rel="stylesheet" href="{% static 'main_page/css/bootstrap.min.css' %}" type="text/css">
+<a href="#"><img src="{% static 'main_page/images/logo.png' %}" alt="HATA">HATA</a>
+<script src="{% static 'main_page/js/jquery-1.11.3.min.js' %}"></script>
+```

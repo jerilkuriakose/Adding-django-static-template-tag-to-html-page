@@ -25,6 +25,15 @@
 # like
 # D:\>python replace_path.py "C:\Users\username\Desktop\hata-html"
 
+# if your static files are located inside another folder, pass the folder name as the second arguement
+# D:\>python replace_path.py <directory_path> <static_folder_name>
+# or
+# D:\>python replace_path.py "C:\Users\username\Desktop\hata-html" "main_page/"
+# will be replaced as
+# <link rel="stylesheet" href="{% static 'main_page/css/bootstrap.min.css' %}" type="text/css">
+# <a href="#"><img src="{% static 'main_page/images/logo.png' %}" alt="HATA">HATA</a>
+# <script src="{% static 'main_page/js/jquery-1.11.3.min.js' %}"></script>
+
 import os
 import re
 import sys
@@ -32,8 +41,22 @@ import sys
 # regex pattern to get the path from 'src' and 'href'
 regex = ur'(src|href)="(.+?)"'
 
+# start pattern
+start = "{% static '"
+
+middle = ""
+
+# end pattern
+end = "' %}"
+
 # get the base directory from command line arguements
-base_dir = sys.argv[1]
+if len(sys.argv) == 2:
+    base_dir = sys.argv[1]
+elif len(sys.argv) == 3:
+    base_dir = sys.argv[1]
+    middle = sys.argv[2]
+else:
+    raise ValueError("unsupported arguments passed")
 
 # to check whether it is a directory or not
 if os.path.splitext(base_dir)[1]:
@@ -81,10 +104,10 @@ for html_file in html_files:
         # Checking for duplicate items
         if data.count(name) > 1:
             if name not in duplicate:
-                data = data.replace(name, "{% static '" + name + "' %}")
+                data = data.replace(name, start + middle + name + end)
                 duplicate.append(name)
         else:
-            data = data.replace(name, "{% static '" + name + "' %}")
+            data = data.replace(name, start + middle + name + end)
 
     # writing the edited HTML file
     with open(html_file, 'w') as f:
