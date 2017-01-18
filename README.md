@@ -41,7 +41,7 @@ or
 D:\>python replace_path.py "C:\Users\username\Desktop\hata-html" "main_page/"
 ```
 will be replaced as follows:
-```
+```html
 <link rel="stylesheet" href="{% static 'main_page/css/bootstrap.min.css' %}" type="text/css">
 <a href="#"><img src="{% static 'main_page/images/logo.png' %}" alt="HATA">HATA</a>
 <script src="{% static 'main_page/js/jquery-1.11.3.min.js' %}"></script>
