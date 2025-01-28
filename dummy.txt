@@ -1,0 +1,29 @@
+I see you're trying to install llama-cpp-python but running into SSL certificate verification issues while trying to build cmake as a dependency. This is a common issue on Windows systems, particularly in MSYS2/UCRT64 environments.
+Here are a few approaches to resolve this:
+
+First try installing cmake separately using pacman (since you're using MSYS2):
+
+bashCopypacman -S mingw-w64-ucrt-x86_64-cmake
+
+Then try installing llama-cpp-python again, but with the --trusted-host flag:
+
+bashCopypip install llama-cpp-python --trusted-host pypi.org --trusted-host files.pythonhosted.org
+If that doesn't work, you can try this alternative approach:
+
+Install the required certificates:
+
+bashCopypacman -S mingw-w64-ucrt-x86_64-ca-certificates
+
+Set the SSL certificate path:
+
+bashCopyexport SSL_CERT_DIR=/ucrt64/ssl/certs
+export SSL_CERT_FILE=/ucrt64/ssl/cert.pem
+
+Then try the installation again:
+
+bashCopypip install llama-cpp-python
+If you're still having issues, you could also try installing from source:
+bashCopygit clone https://github.com/abetlen/llama-cpp-python.git
+cd llama-cpp-python
+pip install .
+Let me know which approach you try and if you run into any other errors.
